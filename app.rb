@@ -8,17 +8,18 @@ get ('/') do
 	erb(:index)
 end
 
-post('contact') do 
+post('/contact') do 
 	home = params.fetch("home") 
 	cell = params.fetch("cell")
 	work = params.fetch("work")
-	contact = Contact.new(home, cell, year)
+	contact = Contact.new(home, cell, work)
 	contact.save()
 	@contacts = Contact.all()
 	erb(:index)
 end
 
-get('/contact/:id') do 
+get('/contacts/:id') do 
 	@contact = Contact.find(params.fetch("id"))
 	erb(:contact)
 end
+
