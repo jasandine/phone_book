@@ -30,6 +30,14 @@ end
   	end
   end
 
+  describe('#id') do 
+  	it("returns the id of the contact") do 
+  		test_contact = Contact.new(5413901111, 5413902222, 5413903333)
+  		test_contact.save()
+  		expect(test_contact.id()).to(eq(1))
+  	end
+  end
+
   describe("#save") do 
   	it ("adds a name to the array of saved numbers") do 
   		test_contact = Contact.new(5413901111, 5413902222, 5413903333)
@@ -49,6 +57,16 @@ end
   		Contact.new(5413901111, 5413902222, 5413903333).save()
   		Contact.clear()
   		expect(Contact.all()).to(eq([]))
+  	end
+  end
+
+  describe(".find") do 
+  	it("returns a contact by its id number") do 
+  		test_contact = Contact.new(5413901111, 5413902222, 5413903333)
+  		test_contact.save()
+  		test_contact2 = Contact.new(5413901111, 5414445555, 5416667777)
+  		test_contact2.save()
+  		expect(Contact.find(test_contact.id())).to(eq(test_contact))
   	end
   end
 end
