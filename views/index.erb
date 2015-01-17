@@ -1,24 +1,15 @@
-<h1>Contacts</h1>
+<h1>Phonebook</h1>
 
-<h3>Add a contact here:</h3>
+<h3>Add a friend here:</h3>
 
-<form action="/contact" method="post">
-  <label for="home">Home Phone:</label>
-  <input id="home" name="home" type="text">
-
-  <label for="cell">Cell Phone:</label>
-  <input id="cell" name="cell" type="text">
-
-  <label for="work">Work Phone:</label>
-  <input id="work" name="work" type="text">
-
-  <button type="submit">Add Contact</button>
+<form action="/phones" method="post">
+  <label for='name'>Contact name:</label>
+  <input id='name' name='name' type='text'>
+  <button type="submit">Add Friend</button>
 </form>
 
-
-<h3>Here are the contacts: </h3>
 <ul>
-  <% @contacts.each() do |contact| %>
-    <li><a href="/contacts/<%= contact.id() %>"><%= contact.cell() %></a></li>
+  <% @phones.each() do |phone| %>
+    <li><a href="/phones/<%= phone.id() %>"><%= phone.name() %></a></li>
   <% end %>
 </ul>
